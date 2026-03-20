@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 42 33% 94%;
+    --foreground: 220 14% 10%;
+    --card: 42 33% 94%;
+    --card-foreground: 220 14% 10%;
+    --popover: 42 33% 94%;
+    --popover-foreground: 220 14% 10%;
+    --primary: 0 62% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 48 78% 75%;
+    --secondary-foreground: 220 14% 10%;
+    --muted: 42 20% 88%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 0 62% 52%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 42 20% 85%;
+    --input: 42 20% 85%;
+    --ring: 0 62% 52%;
+    --radius: 1.75rem;
+    
+    /* Custom Gadget Dogs Colors */
+    --paper: #F6F2EA;
+    --ink: #0B0F17;
+    --red: #D13B3B;
+    --butter: #F2E18B;
+    --mint: #A8E0C8;
+    --tangerine: #F6B67B;
+    --sky: #A8D1F2;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+  
+  body {
+    @apply bg-[var(--paper)] text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+  
+  .heading-display {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.86;
+    letter-spacing: -0.02em;
+  }
+  
+  .label-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+  }
+}
+
+/* Smooth scrolling for Lenis (if used) */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--red);
+}

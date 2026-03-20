@@ -1,0 +1,109 @@
+/* App-specific styles */
+
+/* Ensure smooth scrolling behavior */
+html {
+  scroll-behavior: auto;
+}
+
+/* Hide scrollbar during animations for cleaner look */
+body.is-animating {
+  overflow: hidden;
+}
+
+/* Card hover effects */
+.photo-card {
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover {
+  transform: scale(1.02);
+}
+
+/* Button hover lift effect */
+button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(209, 59, 59, 0.3);
+}
+
+/* Ensure pinned sections stack correctly */
+.pinned-section {
+  will-change: transform;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .pinned-section .photo-card {
+    left: 50% !important;
+    right: auto !important;
+    top: 10vh !important;
+    width: 88vw !important;
+    height: 38vh !important;
+    transform: translateX(-50%);
+  }
+  
+  .pinned-section > div:not(.photo-card) {
+    left: 6vw !important;
+    top: 54vh !important;
+    width: 88vw !important;
+  }
+  
+  .heading-display {
+    font-size: clamp(32px, 10vw, 48px) !important;
+  }
+}
+
+/* Form input focus states */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #D13B3B !important;
+  box-shadow: 0 0 0 3px rgba(209, 59, 59, 0.1);
+}
+
+/* Link hover transitions */
+a {
+  transition: color 0.2s ease;
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Loading state for images */
+img[src=""] {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .pinned-section {
+    position: relative !important;
+    height: auto !important;
+    min-height: 100vh;
+  }
+}
